@@ -94,10 +94,11 @@ def create_lvyou_url(web_type,web_base):
 #TODO: get seed url list
 spiderConf = SpiderConf()
 parseHtml  = ParseHtml()
-
+run = sys.argv[1]
+print run
 web_site = spiderConf.get_web_site_conf()
 for web in web_site:
-    if web != 'qy':
+    if web != run:
         continue
     urls = create_lvyou_url(web,web_site[web])
     for item in urls:
