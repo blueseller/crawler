@@ -33,19 +33,19 @@ class ParseHtml:
     #from_type 为出发大分类，供自己用
     #wfrom 为产品出发城市
     def insertToDb(self,url,h5_url,day,wfrom,from_type,wto,type,price,price_range,title,sub_title,fly_company,hotal,go_date,base_img,product_recommend,product_know,product_price_detail='',product_cancel_detail='',special_detail='',date_detail=''):
-        print "a:"+product_recommend
-        print "b:"+product_price_detail
-        print "c:"+product_know
-        print "d:"+product_cancel_detail 
-        print "e:"+special_detail
-        print "f:"+date_detail
-        print "g:"+fly_company
-        print "h:"+hotal
-        print "i:"+base_img
-        print "j:"+sub_title
-        print "k:"+title
-        print "m:"+price
-        print "n:"+price_range
+       # print "a:"+product_recommend
+       # print "b:"+product_price_detail
+       # print "c:"+product_know
+       # print "d:"+product_cancel_detail 
+       # print "e:"+special_detail
+       # print "f:"+date_detail
+       # print "g:"+fly_company
+       # print "h:"+hotal
+       # print "i:"+base_img
+       # print "j:"+sub_title
+       # print "k:"+title
+       # print "m:"+price
+       # print "n:"+price_range
 
         conn = self.connectDb()
         web_name = self.website_list[type]
@@ -69,7 +69,7 @@ class ParseHtml:
         conn.commit()
     
     def request_url(self,url):
-        print url
+        #print url
         request = urllib2.Request(url)
         request.add_header('User-Agent', 'Baiduspider')
         f = urllib2.urlopen(request,timeout=30)
@@ -373,7 +373,7 @@ class ParseHtml:
             date_detail = {}
             i = 1
             for (d_k,k_v) in date_datas.items():
-                print d_k
+                #print d_k
                 for vau in k_v:
                     date_detail[i] = d_k + "-" + str(vau['date']) + ",余"+str(vau['stock'])+"人,"+str(vau['price']) + "人"
                     i = i+1
@@ -495,7 +495,7 @@ class ParseHtml:
             try:
                 if len(date_detail_arr):
                     date_detail_content = date_detail_arr[0][2:]
-                    print date_detail_content
+                    #print date_detail_content
                     s = json.loads(date_detail_content)
                     for (k_date,v_value) in s['dates'].items():
                         date_detail[j] = str(k_date) + ",余"+str(v_value['most'])+"人,"+str(v_value['trip_price'])+"元"
