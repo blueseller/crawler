@@ -11,7 +11,8 @@ import re
 from pyquery import PyQuery as pq
 class ParseHtml:
 
-    DB_CONN = MySQLdb.connect(host="10.121.95.81",user="root",passwd="qihoo@360@qihoo",db="lvyou",charset='utf8')
+    #DB_CONN = MySQLdb.connect(host="10.121.95.81",user="root",passwd="qihoo@360@qihoo",db="lvyou",charset='utf8')
+    DB_CONN = MySQLdb.connect(host="127.0.0.1",user="root",passwd="198579529WlA",db="baicaijie",charset='utf8')
     website_list = {'qy':'穷游','jkcf':'即刻出发','qn':'去哪网','alx':'爱旅游','llh':'来来会'}
 
     def requestUrlAndInertDb(self,item):
@@ -69,10 +70,10 @@ class ParseHtml:
         conn.commit()
     
     def request_url(self,url):
-        #print url
+        print date("Y-m-d H:i:s")."runing ".url
         request = urllib2.Request(url)
         request.add_header('User-Agent', 'Baiduspider')
-        f = urllib2.urlopen(request,timeout=30)
+        f = urllib2.urlopen(request,timeout=300)
         text = f.read()
         #text = unicode(f.read(),'utf-8')
         time.sleep(1)
