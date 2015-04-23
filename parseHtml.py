@@ -70,7 +70,7 @@ class ParseHtml:
         conn.commit()
     
     def request_url(self,url):
-        print date("Y-m-d H:i:s")."runing ".url
+        print time.strftime('%Y-%m-%d %H:%M:%S',time.localtime(time.time()))+" runing "+url
         request = urllib2.Request(url)
         request.add_header('User-Agent', 'Baiduspider')
         f = urllib2.urlopen(request,timeout=300)
